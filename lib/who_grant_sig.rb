@@ -1,5 +1,5 @@
 require "who_grant_sig/version"
+require 'openssl'
 
-module WhoGrantSig
-  # Your code goes here...
-end
+require 'who_grant_sig/header'
+require 'who_grant_sig/validator'
