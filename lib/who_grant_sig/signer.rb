@@ -1,6 +1,9 @@
 module WhoGrantSig
   module Signer
-    def encryption_key
+    def private_key
+    end
+
+    def public_key
     end
 
     def email_identifier

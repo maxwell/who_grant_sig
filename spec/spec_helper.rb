@@ -8,10 +8,10 @@ RSpec.configure do |config|
 end
 
 class FakeUser
-  attr_accessor :key, :diaspora_handle
+  attr_accessor :key, :email_identifier
   def initialize
     self.key = new_key
-    self.diaspora_handle = "maxwell@joindiaspora.com"
+    self.email_identifier = "maxwell@joindiaspora.com"
   end
 
   def new_key
@@ -23,6 +23,6 @@ class FakeUser
   end
 
   def private_key 
-    key.private_key
+    key
   end
 end
