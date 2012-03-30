@@ -25,7 +25,6 @@ module WhoGrantSig
       [email_identifier, valid_until].join(',')
     end
 
-
     #where should I base64?
     def signature
       encryption_key.sign(OpenSSL::Digest::SHA256.new, id_string)

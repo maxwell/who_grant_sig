@@ -14,10 +14,9 @@ module WhoGrantSig
     end
 
     private 
+
     def reconstructed_grant
-      puts from
-      puts time
-      [from, time].join(',')
+      [email_identifier, valid_until].join(',')
     end
 
     def signature_is_valid?
@@ -25,7 +24,7 @@ module WhoGrantSig
     end
 
     def grant_is_still_valid?
-      time < Time.now +  TIME_THRESHOLD
+      valid_until > Time.now.to_i
     end
 
 
@@ -34,13 +33,13 @@ module WhoGrantSig
       signature_header.strip
     end
 
-    def from
+    def email_identifier
       from_header.strip
     end
 
 
-    def time
-      Time.at(time_header.to_i)
+    def valid_until
+      Time.at(time_header.to_i).to_i
     end
 
     def find_author(from)
