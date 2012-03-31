@@ -27,7 +27,6 @@ module WhoGrantSig
       valid_until > Time.now.to_i
     end
 
-
     #private
     def signature
       signature_header.strip
