@@ -27,7 +27,7 @@ module WhoGrantSig
 
     #where should I base64?
     def signature
-      encryption_key.sign(OpenSSL::Digest::SHA256.new, id_string)
+      Base64.encode64(encryption_key.sign(OpenSSL::Digest::SHA256.new, id_string))
     end
 
     def encryption_key

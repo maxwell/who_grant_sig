@@ -35,7 +35,7 @@ module WhoGrantSig
 
     #private
     def signature
-      signature_header.strip
+      Base64.decode64(signature_header.strip)
     end
 
     def email_identifier
