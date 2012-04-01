@@ -1,12 +1,13 @@
 module WhoGrantSig
  class Validator
-    attr_accessor :from_header, :signature_header, :time_header
+    attr_accessor :from_header, :signature_header, :time_header, :requestor
 
     def initialize(from_header,  time_header, signature_header)
       self.from_header = from_header
       self.time_header = time_header
       self.signature_header = signature_header
       @from = find_author(from_header)
+      self.requestor = @from
     end
 
     def verified?  
