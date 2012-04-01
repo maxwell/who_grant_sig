@@ -14,6 +14,11 @@ module WhoGrantSig
       signature_is_valid? && grant_is_still_valid?
     end
 
+    def verify!
+      raise "signature not valid" unless signature_is_valid?
+      raise "grant no longer valid" unless grant_is_still_valid?
+    end
+
     private 
 
     def reconstructed_grant
@@ -43,11 +48,11 @@ module WhoGrantSig
     end
 
     def find_author(from)
-      Webfinger.new(from).fetch
+      Whofinger.new(from).fetch
     end
 
     def public_key 
-      @from.public_key
+      @from.webfinger_profile.public_key
     end
   end
 end

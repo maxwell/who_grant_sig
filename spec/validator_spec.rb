@@ -9,6 +9,7 @@ describe WhoGrantSig::Validator do
 
   it 'seems to work reasonably' do
     validator = WhoGrantSig::Validator.new(@headers.email_identifier, @headers.valid_until, @headers.signature)
+    validator.verify!
     validator.should be_verified
   end
 

@@ -25,4 +25,8 @@ class FakeUser
   def private_key 
     key
   end
+
+  def webfinger_profile
+    self
+  end
 end
