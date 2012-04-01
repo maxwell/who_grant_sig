@@ -11,9 +11,9 @@ module WhoGrantSig
 
     def grant
       {
-        'from' => email_identifier,
-        'X-WhoGrantSig-valid-until' => valid_until,
-        'X-WhoGrantSig-signature' => signature
+        FROM_HEADER => email_identifier,
+        TIME_HEADER => valid_until,
+        SIGNATURE_HEADER => signature
       }
     end
 

@@ -4,11 +4,12 @@ describe WhoGrantSig::Validator do
   before do
     @maxwell = FakeUser.new
     WhoGrantSig::Validator.any_instance.stub(:find_author).and_return(@maxwell)
-    @headers = WhoGrantSig::Header.new(@maxwell)
+    @header = WhoGrantSig::Header.new(@maxwell)
+
   end
 
   it 'seems to work reasonably' do
-    validator = WhoGrantSig::Validator.new(@headers.email_identifier, @headers.valid_until, @headers.signature)
+    validator = WhoGrantSig::Validator.new(@header.grant)
     validator.verify!
     validator.should be_verified
   end
@@ -19,7 +20,7 @@ describe WhoGrantSig::Validator do
     end
 
     it 'if the sigature has been messed with' do
-      validator = WhoGrantSig::Validator.new(@headers.email_identifier, @headers.valid_until, "bogussig")
+      validator = WhoGrantSig::Validator.new(@header.grant.merge(WhoGrantSig::SIGNATURE_HEADER => 'sdfssfd'))
       validator.should_not be_verified
     end
   end
