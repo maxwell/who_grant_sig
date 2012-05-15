@@ -7,7 +7,7 @@ module WhoGrantSig
         builder.use Faraday::Response::Logger     # log the request to STDOUT
         builder.use Faraday::Adapter::NetHttp     # make http requests with Net::HTTP
 
-        builder.user Faraday::Request::WhoGrantSig(requestor)
+        builder.use Faraday::Request::WhoGrantSig, requestor
       end
 
       conn.get(url)
