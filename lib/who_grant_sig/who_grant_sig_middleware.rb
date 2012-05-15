@@ -17,7 +17,6 @@ module Faraday
     
 
     def call(env)
-      params = env[:url].query_values || {}
       sig = WhoGrantSig::Header.new(@user)
       env[:request_headers].merge!(sig.grant)
       @app.call env
