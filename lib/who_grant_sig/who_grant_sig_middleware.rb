@@ -11,7 +11,7 @@ module Faraday
     
     def initialize(app, user)
       @app = app
-      @user = args.shift
+      @user = user
     end
     
     
