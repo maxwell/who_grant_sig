@@ -19,6 +19,7 @@ module Faraday
     def call(env)
       sig = WhoGrantSig::Header.new(@user)
       env[:request_headers].merge!(sig.grant)
+      puts env.inspect
       @app.call env
     end
   end
